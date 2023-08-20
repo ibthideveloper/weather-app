@@ -43,7 +43,11 @@
       <div class="location-container">
         <form [formGroup]="weatherForm">
           <input formControlName="city" placeholder="Enter city name" />
-          <button (click)="getWeather()" class="location-button">
+          <button
+            (click)="getWeather()"
+            class="location-button"
+            [disabled]="weatherForm.get('city')?.invalid"
+          >
             Get Weather
           </button>
         </form>

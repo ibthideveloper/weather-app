@@ -37,7 +37,7 @@ export class WeatherComponent implements OnInit {
     return Math.round(value);
   }
 
-  get cityName() {
+  get cityName(): string {
     return this.weatherForm.get('city')?.value;
   }
 }
