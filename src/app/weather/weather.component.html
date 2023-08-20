@@ -1,0 +1,53 @@
+<div class="main-div">
+  <div class="container">
+    <div class="weather-side">
+      <div class="weather-gradient"></div>
+      <div class="date-container">
+        <h2 class="date-dayname">{{ todayDate | date : "EEEE" }}</h2>
+        <span class="date-day">{{ todayDate | date : "MMM y" }}</span
+        ><i class="location-icon" data-feather="map-pin"></i
+        ><span class="location">{{ cityName }}</span>
+      </div>
+
+      <div
+        class="weather-container"
+        *ngIf="weatherData$ | async as weatherData"
+      >
+        <i class="weather-icon" data-feather="sun"></i>
+        <h1 class="weather-temp">
+          {{ transformTemperature(weatherData.main.temp - 273.15) }}°C
+        </h1>
+        <h3 class="weather-desc">{{ weatherData.weather[0].description }}</h3>
+      </div>
+    </div>
+    <div class="info-side">
+      <div class="today-info-container">
+        <div class="today-info">
+          <div *ngIf="weatherError$ | async" class="error-message">
+            City Not Found !
+          </div>
+          <ng-container *ngIf="weatherData$ | async as weatherData">
+            <div class="humidity">
+              <span class="title">HUMIDITY</span
+              ><span class="value">{{ weatherData.main.humidity }} %</span>
+              <div class="clear"></div>
+            </div>
+            <div class="wind">
+              <span class="title">WIND</span
+              ><span class="value">{{ weatherData.wind.speed }} km/h</span>
+              <div class="clear"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="location-container">
+        <form [formGroup]="weatherForm">
+          <input formControlName="city" placeholder="Enter city name" />
+          <button (click)="getWeather()" class="location-button">
+            Get Weather
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
