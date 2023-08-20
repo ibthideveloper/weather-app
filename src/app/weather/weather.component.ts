@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WeatherService } from '../service/weather.service';
 import { Observable } from 'rxjs';
+import { WeatherResponse } from '../model/weather-response.model';
 
 @Component({
   selector: 'app-weather',
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./weather.component.scss'],
 })
 export class WeatherComponent implements OnInit {
-  weatherData$: Observable<any> = new Observable<any>();
+  weatherData$: Observable<WeatherResponse> = new Observable<WeatherResponse>();
   weatherForm: FormGroup = this.fb.group({
     city: ['', Validators.required],
   });

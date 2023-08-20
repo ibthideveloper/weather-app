@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 
 import * as WeatherActions from './weather.actions';
 import { WeatherService } from '../service/weather.service';
+import { WeatherResponse } from '../model/weather-response.model';
 
 @Injectable()
 export class WeatherEffects {
@@ -13,7 +14,9 @@ export class WeatherEffects {
       ofType(WeatherActions.loadWeather),
       mergeMap(({ city }) =>
         this.weatherService.getHttpWeather(city).pipe(
-          map((data) => WeatherActions.loadWeatherSuccess({ data })),
+          map((data: WeatherResponse) =>
+            WeatherActions.loadWeatherSuccess({ data })
+          ),
           catchError((error) =>
             of(WeatherActions.loadWeatherFailure({ error }))
           )

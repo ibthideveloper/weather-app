@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { WeatherResponse } from '../model/weather-response.model';
 
 export const loadWeather = createAction(
   '[Weather] Load Weather',
@@ -7,7 +8,7 @@ export const loadWeather = createAction(
 
 export const loadWeatherSuccess = createAction(
   '[Weather] Load Weather Success',
-  props<{ data: any }>()
+  props<{ data: WeatherResponse }>()
 );
 
 export const loadWeatherFailure = createAction(

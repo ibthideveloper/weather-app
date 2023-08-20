@@ -1,14 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import * as WeatherActions from './weather.actions';
+import { WeatherResponse } from '../model/weather-response.model';
 
 export interface WeatherState {
-  data: any;
+  data: WeatherResponse;
   loading: boolean;
   error: any;
 }
 
 const initialState: WeatherState = {
-  data: null,
+  data: null as unknown as WeatherResponse,
   loading: false,
   error: null,
 };
