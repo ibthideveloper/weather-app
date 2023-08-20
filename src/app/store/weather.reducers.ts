@@ -25,6 +25,7 @@ export const weatherReducer = createReducer(
   })),
   on(WeatherActions.loadWeatherFailure, (state, { error }) => ({
     ...state,
+    data: null as unknown as WeatherResponse,
     loading: false,
     error,
   }))
