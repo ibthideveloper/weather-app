@@ -13,7 +13,7 @@ import {
   providedIn: 'root',
 })
 export class WeatherService {
-  private apiKey = '5156ef8849aa30fe022482c9f9fda167';
+  private apiKey = '';
   private baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
   constructor(private http: HttpClient, private store: Store<WeatherState>) {}
